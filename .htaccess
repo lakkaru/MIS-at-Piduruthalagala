@@ -1,0 +1,11 @@
+RewriteEngine On
+#RewriteBase /Management Information System at Piduruthalagala/
+# execute rewrite rule if request not( file, derectory, or link)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+
+#rewriting all url except root url into index.php page with other request assigned to 'url'
+#[QSA,L] means if there's a query string passed with the original URL, it will be appended to the rewrite (olle?p=1 will be rewritten as index.php?url=olle&p=1.
+#L means if the rule matches, don't process any more RewriteRules below this one.
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]  

@@ -1,0 +1,14 @@
+/*removing close cross on dialog box*/
+.ui-dialog-titlebar-close {
+    visibility: hidden;
+}
+.modal-content{
+    background-color: #FFBE5C;
+}
+.modal-body{
+    background-color: #DE5926;
+}
+marquee{
+    width:100%;
+    height: 428px;
+}
