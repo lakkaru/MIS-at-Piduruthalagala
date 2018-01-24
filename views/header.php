@@ -38,7 +38,7 @@ if (!isset($_SESSION['equipment'])) {
         <script type="text/javascript" src="<?php echo URL; ?>public/js/jquery.validate.min.js"></script>
         <script type="text/javascript" src="<?php echo URL; ?>public/js/custom.js"></script>
 
-        <?php // require 'util/Auth.php';?>
+       
         <?php
         if (isset($this->css)) {//linking default css file relawant to calling file
             foreach ($this->css as $css) {
@@ -53,6 +53,7 @@ if (!isset($_SESSION['equipment'])) {
             }
         }
         ?>
+         
 
     </head>
 
@@ -63,7 +64,7 @@ if (!isset($_SESSION['equipment'])) {
         <div id="deleteDialog" class="confDialog" hidden="" title="Confirmation Required">
             Do you want to delete record?
         </div>
-        
+
         <!--for logout confirm dialog-->
         <div id="logoutDialog" class="confDialog" hidden="" title="Confirmation Required">
             Do you want to logout from the system?

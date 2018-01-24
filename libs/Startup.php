@@ -18,7 +18,7 @@ class Startup {
 //        var_dump($this->_url);
         //load the default controller if no URL is set
         if (empty($this->_url[1]) ) {//when ask for root directory
-            echo 'default controller /';
+//            echo 'default controller /';
             $this->_loadDefaultController();
             return FALSE;
         }
@@ -56,12 +56,12 @@ class Startup {
         $file = $this->_controllerPath . $this->_url[1] . '.php'; // assigning controller
         if (file_exists($file)) {
             require $file; //getting files from controller
-            echo 'Existing controller /'; 
+//            echo 'Existing controller /'; 
 //            echo $this->_url[1]; 
             $this->_controller = new $this->_url[1]; //setting $controler to controllers->$url[1].php
             $this->_controller->loadModel($this->_url[1], $this->_modelPath); //load models from libs/Controller.php
         } else {
-            echo 'No controller->default controller /';
+//            echo 'No controller->default controller /';
             $this-> _loadDefaultController();//goto index page
             return FALSE;
         }
