@@ -4,7 +4,7 @@ class Controller {
 
     function __construct() {
         $this->view = new View(); //creating new view class of lib/view.php
-        require 'util/Auth.php';//for user authenticating functions 
+        require 'Auth.php';//for user authenticating functions 
     }
 
     /**

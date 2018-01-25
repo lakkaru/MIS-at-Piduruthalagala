@@ -15,6 +15,7 @@ class Database extends PDO {
      * @return mixed
      */
     public function select($sql, $array = array(), $fetchMode = PDO::FETCH_NAMED) {
+//        var_dump($array);die;
         $sth = $this->prepare($sql);
         foreach ($array as $key => $value) {
             $sth->bindValue("$key", $value);

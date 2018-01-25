@@ -1,10 +1,10 @@
 <!--Home page index-->
 <?php
-//if (($this->dieselMsg) != NULL) {//warning alert for no diesel stock data
-//    echo '<div id="dieselMsg" class="alert alert-warning">'
-//    . '<strong>Warning!</strong> ' . $this->dieselMsg . ''
-//    . '</div>';
-//}
+if (($this->dieselMsg) != NULL) {//warning alert for no diesel stock data
+    echo '<div id="dieselMsg" class="alert alert-warning">'
+    . '<strong>Warning!</strong> ' . $this->dieselMsg . ''
+    . '</div>';
+}
 ?> 
 <div class="row ">
     <!--for staff notice scrolling-->
@@ -13,16 +13,16 @@
             <legend >Staff notices </legend>
             <marquee class='' behavior="scroll" direction='up' scrollamount="2">
                 <?php
-//                foreach ($this->fiveNotice as $key => $value) {
-//                    echo '<p><span style="color:blue">' . $value['date'] . '</span> - ' . $value['description'] . '</p>';
-//                }
+                foreach ($this->fiveNotice as $key => $value) {
+                    echo '<p><span style="color:blue">' . $value['date'] . '</span> - ' . $value['description'] . '</p>';
+                }
                 ?></marquee>
         </div>
     </div>
     <!--For diesel stock chart form google-->
     <div class="col-lg-4"> 
         <input type="text" id="dieselStock" hidden value=<?php
-//        echo round($this->approxStock);
+        echo round($this->approxStock);
         ?> />
         <div id="chart_div" style=" width: 85%;  margin: 0 auto;">
 
@@ -36,16 +36,16 @@
                 <?php
                 $futureDate = new DateTime();
                 $futureDate->modify("3 month");
-//                foreach ($this->fiveMtce as $key => $value) {
-//                    $mtceDate = new DateTime($value['nextDate']);
-//                    if ($futureDate >= $mtceDate) {
-//                        echo '<p><span style="color:blue">' . $value['nextDate'] . ' - </span><span style="color:red">' . $value['equipment'] . ' - ' . $value['description'] .
-//                        '</span></p>';
-//                    } else {
-//                        echo '<p><span style="color:blue">' . $value['nextDate'] . ' - </span><span style="color:green">' . $value['equipment'] . ' - ' . $value['description'] .
-//                        '</span></p>';
-//                    }
-//                }
+                foreach ($this->fiveMtce as $key => $value) {
+                    $mtceDate = new DateTime($value['nextDate']);
+                    if ($futureDate >= $mtceDate) {
+                        echo '<p><span style="color:blue">' . $value['nextDate'] . ' - </span><span style="color:red">' . $value['equipment'] . ' - ' . $value['description'] .
+                        '</span></p>';
+                    } else {
+                        echo '<p><span style="color:blue">' . $value['nextDate'] . ' - </span><span style="color:green">' . $value['equipment'] . ' - ' . $value['description'] .
+                        '</span></p>';
+                    }
+                }
                 ?></marquee>
         </div>
     </div>

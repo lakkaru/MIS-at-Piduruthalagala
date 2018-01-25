@@ -8,11 +8,14 @@ class Index extends Controller {
  }
 
     function index() {//sending paramiters to View() at lib/view.php
-        $this->view->title = 'Home';//title at header.php
+       $this->view->title = 'Home';
+        $this->view->fiveNotice = $this->model->fiveNotice();
+        $this->view->fiveMtce = $this->model->fiveMtce();
+        $this->view->pastMtce = $this->model->pastMtce();
         $this->view->endStock = $this->model->endStock();
-         $this->view->approxStock = $this->model->approxStock();
-         $this->view->dieselMsg = $this->model->dieselMsg;
-        $this->view->render('index/index'); 
+        $this->view->approxStock = $this->model->approxStock();
+        $this->view->dieselMsg = $this->model->dieselMsg;
+        $this->view->render('index/index'); //sending paramiters to View() at lib/view.php
     }
 
 }
