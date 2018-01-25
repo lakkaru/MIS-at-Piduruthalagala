@@ -9,6 +9,9 @@ class Index extends Controller {
 
     function index() {//sending paramiters to View() at lib/view.php
         $this->view->title = 'Home';//title at header.php
+        $this->view->endStock = $this->model->endStock();
+         $this->view->approxStock = $this->model->approxStock();
+         $this->view->dieselMsg = $this->model->dieselMsg;
         $this->view->render('index/index'); 
     }
 

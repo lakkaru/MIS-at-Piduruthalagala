@@ -1,0 +1,14 @@
+#printHead{
+    text-align: center;
+    font-size:30px;
+    font-weight: bold;
+}
+label {
+    float: right;
+}
+.hideDates {
+    display: none;
+}
+#print{
+    background-color:#DDEBF9;
+}

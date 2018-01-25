@@ -38,7 +38,7 @@ if (!isset($_SESSION['equipment'])) {
         <script type="text/javascript" src="<?php echo URL; ?>public/js/jquery.validate.min.js"></script>
         <script type="text/javascript" src="<?php echo URL; ?>public/js/custom.js"></script>
 
-       
+       <?php // require  'util/Auth.php';//for user authenticating functions ?>
         <?php
         if (isset($this->css)) {//linking default css file relawant to calling file
             foreach ($this->css as $css) {

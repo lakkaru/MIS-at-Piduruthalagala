@@ -17,7 +17,7 @@ class Startup {
         $this->_getUrl(); //Sets the private $_url
 //        var_dump($this->_url);
         //load the default controller if no URL is set
-        if (empty($this->_url[1]) ) {//when ask for root directory
+        if (empty($this->_url[0]) ) {//when ask for root directory
 //            echo 'default controller /';
             $this->_loadDefaultController();
             return FALSE;
@@ -32,7 +32,7 @@ class Startup {
      * Fetches the REQUEST_URI from 'url'
      */
     private function _getUrl() {
-        $url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : null; //getting paramiters from url via htaccess      
+         $url = isset($_GET['url']) ? $_GET['url'] : null; //getting paramiters from url via htaccess
         $url = trim($url, '/'); //removing additional '/ ' from url
         $url = filter_var($url, FILTER_SANITIZE_URL); //removing unnecessory entries in url(like \%/)     
         $this->_url = explode("/", $url); //deviding url into parts with '/'
@@ -53,13 +53,13 @@ class Startup {
      * @return boolean|string
      */
     private function _loadExistingController() {
-        $file = $this->_controllerPath . $this->_url[1] . '.php'; // assigning controller
+        $file = $this->_controllerPath . $this->_url[0] . '.php'; // assigning controller
         if (file_exists($file)) {
             require $file; //getting files from controller
 //            echo 'Existing controller /'; 
 //            echo $this->_url[1]; 
-            $this->_controller = new $this->_url[1]; //setting $controler to controllers->$url[1].php
-            $this->_controller->loadModel($this->_url[1], $this->_modelPath); //load models from libs/Controller.php
+            $this->_controller = new $this->_url[0]; //setting $controler to controllers->$url[1].php
+            $this->_controller->loadModel($this->_url[0], $this->_modelPath); //load models from libs/Controller.php
         } else {
 //            echo 'No controller->default controller /';
             $this-> _loadDefaultController();//goto index page
@@ -71,29 +71,29 @@ class Startup {
         $length = count($this->_url);
 //        echo $length; 
         //Make sure the methord is exisits
-        If ($length > 2) {
-            if (!method_exists($this->_controller, $this->_url[2])) {//checking method _url[2] in controllers/_url[1].php
+        If ($length > 1) {
+            if (!method_exists($this->_controller, $this->_url[1])) {//checking method _url[1] in controllers/_url[0].php
 //                echo 'no method';
-                $this->_error('No Method /');
+                $this->_error('No Method //');
             }
         }
         //Determines what to load
         switch ($length) {
-            case 6:
-                //Controller->Methord(Param1, Param2, Param3)
-                $this->_controller->{$this->_url[2]}($this->_url[3], $this->_url[4], $this->_url[5]);
-                break;
             case 5:
-                //Controller->Methord(Param1, Param2)
-                $this->_controller->{$this->_url[2]}($this->_url[3], $this->_url[4]);
+                //Controller->Methord(Param1, Param2, Param3)
+                $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4]);
                 break;
             case 4:
-                //Controller->Methord(Param1)
-                $this->_controller->{$this->_url[2]}($this->_url[3]);
+                //Controller->Methord(Param1, Param2)
+                $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3]);
                 break;
             case 3:
+                //Controller->Methord(Param1)
+                $this->_controller->{$this->_url[1]}($this->_url[2]);
+                break;
+            case 2:
                 //Controller->Methord()
-                $this->_controller->{$this->_url[2]}();
+                $this->_controller->{$this->_url[1]}();
                 break;
             default:
                 $this->_controller->index();

@@ -1,0 +1,18 @@
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+th{
+    text-align:center;
+    border-bottom: 3px solid black;
+    border-left:  1px solid black;
+}
+td{
+    text-align:center;
+    border-bottom: 1px solid black; 
+    border-left:1px solid black;
+}
+.hideDates {
+    display: none;
+}
